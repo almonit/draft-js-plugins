@@ -99,7 +99,7 @@ export default class Toolbar extends React.Component<ToolbarProps> {
       }
 
       const popupHeight =
-        node.offsetTop + editorRoot.offsetTop > 700
+        document.body.clientHeight > window.innerHeight
           ? node.offsetTop + editorRoot.offsetTop - 150
           : node.offsetTop + editorRoot.offsetTop;
 
