@@ -30,7 +30,7 @@ export default class Toolbar extends React.Component<ToolbarProps> {
   static defaultProps = {
     children: (externalProps: SideToolbarChildrenProps): ReactElement => (
       // may be use React.Fragment instead of div to improve perfomance after React 16
-      <div>
+      <div id="editorButton">
         <HeadlineOneButton {...externalProps} />
         <HeadlineTwoButton {...externalProps} />
         <BlockquoteButton {...externalProps} />
@@ -98,8 +98,18 @@ export default class Toolbar extends React.Component<ToolbarProps> {
         editorRoot = editorRoot.parentNode as HTMLElement;
       }
 
+      let popupButton = document.getElementById('editorButton')!;
+      let popupButtonHeight = popupButton.getBoundingClientRect();
+
+      const popupHeight =
+        popupButtonHeight.top < window.innerHeight
+          ? node.offsetTop + editorRoot.offsetTop
+          : document.body.clientHeight > window.innerHeight
+          ? node.offsetTop + editorRoot.offsetTop - 150
+          : node.offsetTop + editorRoot.offsetTop;
+
       const position: CSSProperties = {
-        top: node.offsetTop + editorRoot.offsetTop,
+        top: popupHeight,
         transform: 'scale(1)',
         transition: 'transform 0.15s cubic-bezier(.3,1.2,.2,1)',
       };
