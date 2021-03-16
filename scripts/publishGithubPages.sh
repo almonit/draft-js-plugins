@@ -4,12 +4,16 @@ git branch -D tmp-gh-pages
 git checkout -b tmp-gh-pages
 rm .gitignore
 
-rm -rf node_modules/.cache
-
 cd packages/docs
 rm -rf out
 yarn next build
 yarn next export
+
+
+touch out/.nojekyll
+touch out/CNAME
+
+echo 'www.draft-js-plugins.com' > out/CNAME
 
 git add out
 git commit -am 'add files'

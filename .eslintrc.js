@@ -10,7 +10,7 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'prettier/@typescript-eslint',
+        'prettier',
       ],
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
@@ -86,7 +86,6 @@ module.exports = {
     'jsx-a11y/img-has-alt': 0,
     'react/require-default-props': 0,
     'react/display-name': 1,
-
     'react/no-direct-mutation-state': 1,
   },
   settings: {

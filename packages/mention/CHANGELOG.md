@@ -5,6 +5,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## To be released
 
+## 4.3.1
+
+- Fix the @ mentions to actually work. Right now they don't work in the middle of a line. If you start a line with "@" it works but if you start typing text then type "@" it doesn't work.
+- Extend the support for chinese symbols [#1888](https://github.com/draft-js-plugins/draft-js-plugins/issues/1888)
+
+## 4.3.0
+
+- fixing trigger range for suggestion strategy [#1772](https://github.com/draft-js-plugins/draft-js-plugins/issues/1772)
+- fixing lookahead RegExp which is not supported in Safari [#1844](https://github.com/draft-js-plugins/draft-js-plugins/issues/1844)
+- added support for multiple triggers
+
 ## 4.2.0
 
 - remove `entryComponent` from plugin config [#1736](https://github.com/draft-js-plugins/draft-js-plugins/issues/1736)

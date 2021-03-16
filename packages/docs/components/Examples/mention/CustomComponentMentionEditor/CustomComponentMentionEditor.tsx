@@ -18,7 +18,7 @@ export default function CustomComponentMentionEditor(): ReactElement {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [suggestions, setSuggestions] = useState(mentions);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
@@ -45,9 +45,12 @@ export default function CustomComponentMentionEditor(): ReactElement {
   const onOpenChange = useCallback((_open: boolean) => {
     setOpen(_open);
   }, []);
-  const onSearchChange = useCallback(({ value }: { value: string }) => {
-    setSuggestions(defaultSuggestionsFilter(value, mentions));
-  }, []);
+  const onSearchChange = useCallback(
+    ({ trigger, value }: { trigger: string; value: string }) => {
+      setSuggestions(defaultSuggestionsFilter(value, mentions, trigger));
+    },
+    []
+  );
 
   return (
     <div
